@@ -129,6 +129,15 @@ def get_token_throughput_latencies(
                     metrics, gen_text, req_cfg = future.result()
                 except Exception as e:
                     logging.warning(f"[WARN] Future raised exception: {e}")
+                    completed_requests.append(
+                        {
+                            common_metrics.ERROR_CODE: type(e).__name__,
+                            common_metrics.ERROR_MSG: str(e),
+                        }
+                    )
+                    continue
+                if metrics[common_metrics.ERROR_CODE] is not None:
+                    completed_requests.append(metrics)
                     continue
                 num_output_tokens = get_token_length(gen_text)
                 if num_output_tokens:
