@@ -117,10 +117,19 @@ class OpenAIChatCompletionsClient:
                 output_throughput = tokens_received / total_request_time
 
         except Exception as e:
+            error_response_code = (
+                error_response_code if error_response_code is not None else type(e).__name__
+            )
+            error_msg = error_msg or str(e)
+
             metrics[common_metrics.ERROR_MSG] = error_msg
             metrics[common_metrics.ERROR_CODE] = error_response_code
             print(f"Warning Or Error: {e}")
             print(error_response_code)
+
+        if metrics[common_metrics.ERROR_CODE] is None and not generated_text:
+            metrics[common_metrics.ERROR_CODE] = "empty_output"
+            metrics[common_metrics.ERROR_MSG] = "Response completed without generated text"
 
         metrics[common_metrics.INTER_TOKEN_LAT] = sum(time_to_next_token)
         metrics[common_metrics.TTFT] = ttft
