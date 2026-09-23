@@ -74,7 +74,10 @@ class ReportContract(unittest.TestCase):
 class CharacterTokenizer:
     chat_template = "test"
 
-    def apply_chat_template(self, messages, tokenize=False, add_generation_prompt=True):
+    def apply_chat_template(self, messages, tokenize=False, add_generation_prompt=True,
+                            enable_thinking=None):
+        if enable_thinking is not False:
+            raise AssertionError("The fixed short-output workload must disable thinking")
         return "[user]" + messages[0]["content"] + "[/user][assistant]"
 
     def encode(self, text, add_special_tokens=False):

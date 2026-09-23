@@ -1,8 +1,8 @@
 {
-  "model_path": "/home/models/Qwen2.5-14B-Instruct",
+  "model_path": "/home/models/Qwen3-4B",
   "served_model_name": "kvready-e004",
-  "asu_config_path": "/path/to/ucm/examples/ucm_config_asu.yaml",
-  "runtime_dir": "/tmp/kvready-e004",
+  "asu_config_path": "/home/j00977581/kvready-e004-01/asu.yaml",
+  "runtime_dir": "/home/j00977581/kvready-e004-01/runtime",
   "proxy_url": "http://127.0.0.1:8300",
   "prefill_url": "http://127.0.0.1:8100",
   "decode_url": "http://127.0.0.1:8200",

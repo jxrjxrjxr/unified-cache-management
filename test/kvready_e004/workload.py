@@ -54,7 +54,8 @@ def chat_frame(tokenizer):
         raise ValueError("Select an instruction model with an existing local chat template")
     marker = "E004_DOCUMENT_CONTENT"
     rendered = tokenizer.apply_chat_template([{"role": "user", "content": marker}],
-                                             tokenize=False, add_generation_prompt=True)
+                                             tokenize=False, add_generation_prompt=True,
+                                             enable_thinking=False)
     if rendered.count(marker) != 1:
         raise ValueError("The chat template must retain the document as one user message")
     before, after = rendered.split(marker)
