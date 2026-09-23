@@ -1,0 +1,13 @@
+{
+  "model_path": "/home/models/Qwen2.5-14B-Instruct",
+  "served_model_name": "kvready-e004",
+  "asu_config_path": "/path/to/ucm/examples/ucm_config_asu.yaml",
+  "runtime_dir": "/tmp/kvready-e004",
+  "proxy_url": "http://127.0.0.1:8300",
+  "prefill_url": "http://127.0.0.1:8100",
+  "decode_url": "http://127.0.0.1:8200",
+  "block_size": 128,
+  "storage_available_bytes": null,
+  "storage_capacity_source": "",
+  "storage_dedicated_to_test": false
+}
